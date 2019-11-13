@@ -120,11 +120,13 @@ function restructureTableResident() {
         tableBody.append(tr)
     }
 }
+
      function deleteRow(event){
 
         let id = event.currentTarget.parentElement.id;
         id = id.replace("_resident", "");
-        residents.splice(id, 1);
+        let indexRes = residents.findIndex( findIndex => findIndex == id)
+        residents.splice(indexRes, 1);
         restructureTableResident ();
      }
 
