@@ -127,7 +127,9 @@ function restructureTableResident() {
         id = id.replace("_resident", "");
         let indexRes = residents.findIndex( findIndex => findIndex == id)
         residents.splice(indexRes, 1);
+        house.residentNow--;
         restructureTableResident ();
+        restructureTableHouse();
      }
 
 document.getElementById('s1').addEventListener('focus', (event)=>{
@@ -141,6 +143,5 @@ document.getElementById('s1').addEventListener('focus', (event)=>{
         selectElement.append(option)
     }
 });
-
 
 restructureTableHouse();
