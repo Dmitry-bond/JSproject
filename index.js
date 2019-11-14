@@ -7,26 +7,7 @@ class House {
         this.residentNow = 0;
         this.id = houeseCounter;
         houeseCounter++;
-       /* function summ() {
-           let res = 0;
-            for(i=0; i<=100; i++){
-               try {
-                   res +=i;
-            if(res>101) throw new Error("Вместимость дома превышена");
-
-            }catch (residentNow) {
-                   if (residentNow >101;){
-                       WScript.Echo(residentNow.description);
-                       break;
-                   }
-               }
-                return res;
-               }
-        }
-        WScript.Echo(summ); */
-
     }
-
 }
 
 
@@ -64,7 +45,11 @@ function restructureTableHouse() {
     }
 }
 
+
+
 let residentCounter = 1;
+
+
 class Resident{
     constructor(name, surname, sex, house) {
       this.name = name;
@@ -84,8 +69,10 @@ document.getElementById("addResident").addEventListener('click', () =>{
     let sex =  document.querySelector('input[name = "sex"]:checked').value;
 
     let houseId = document.getElementById('s1').selectedOptions[0].id;
+
     let house = houses.find((item) => item.id == houseId);
     house.residentNow++;
+
     let resident = new Resident(name, surname, sex, house);
     residents.push(resident);
     restructureTableResident();
@@ -125,8 +112,10 @@ function restructureTableResident() {
 
         let id = event.currentTarget.parentElement.id;
         id = id.replace("_resident", "");
-        let indexRes = residents.findIndex( findIndex => findIndex == id)
+        let indexRes = residents.findIndex( (resident)=> resident.idResident == id)
         residents.splice(indexRes, 1);
+
+        let house = residents.find(resident => resident.idResident == indexRes);
         house.residentNow--;
         restructureTableResident ();
         restructureTableHouse();
@@ -144,4 +133,3 @@ document.getElementById('s1').addEventListener('focus', (event)=>{
     }
 });
 
-restructureTableHouse();
