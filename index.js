@@ -112,12 +112,15 @@ function restructureTableResident() {
 
         let id = event.currentTarget.parentElement.id;
         id = id.replace("_resident", "");
-        let indexRes = residents.findIndex( (resident)=> resident.idResident == id)
+        let indexRes = residents.findIndex( (resident) => resident.idResident == id)
+
+        let resident_1 = residents.find((resident) => resident.idResident == id);
+        resident_1.house.residentNow--;
+
         residents.splice(indexRes, 1);
 
-        let house = residents.find(resident => resident.idResident == indexRes);
-        house.residentNow--;
-        restructureTableResident ();
+
+        restructureTableResident();
         restructureTableHouse();
      }
 
@@ -133,3 +136,4 @@ document.getElementById('s1').addEventListener('focus', (event)=>{
     }
 });
 
+restructureTableHouse();
